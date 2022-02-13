@@ -21,11 +21,12 @@ public class KafkaProducer {
 	public String sendMessage(@RequestBody Student message) {
 
 		try {
-			kafkaTemplate.send(ApplicationConstant.TOPIC_NAME, message);
+			for(int i = 0; i < 10000; i++)
+				kafkaTemplate.send(ApplicationConstant.TOPIC_NAME, message);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "json message sent succuessfully";
+		return "json message sent successfully";
 	}
 
 }
